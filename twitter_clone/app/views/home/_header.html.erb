@@ -20,6 +20,11 @@
               <%= link_to "Tweet", new_tweet_path, class: "nav-link "%>       
             </div>
           </li>
+          <li class="nav-item">
+            <div>
+              Profile: <%= link_to current_user.user_name, show_user_path(current_user), class:"nav-link" %>      
+            </div>
+          </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "sign up", new_user_registration_path, class: "nav-link"%>       

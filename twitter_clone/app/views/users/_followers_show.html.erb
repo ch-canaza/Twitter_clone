@@ -1,0 +1,10 @@
+me sigue
+<p><%= followers_show.full_name %>(<%= followers_show.user_name %>)</p>
+  <% if current_user.followees.include?(followers_show) && current_user != followers_show %>
+    <h5><%= button_to "Unfollow", unfollow_user_path(followers_show), class:'btn btn-info', method: "POST" %></h5>
+  <% else %>
+    <% if current_user != followers_show %>
+      <h5><%= button_to "Follow", follow_user_path(followers_show), class:'btn btn-info', method: "POST"  %></h5>
+      
+    <% end %>
+  <% end%>
