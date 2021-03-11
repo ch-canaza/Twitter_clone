@@ -3,11 +3,13 @@
 # defines methods for CRUD
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show followers followees follow unfollow]
+  before_action :set_page, only: %i[show followers followees]
 
   USERS_PER_PAGE = 2
+  TWEETS_PER_PAGE = 1
 
   def show
-    @user_tweets = @user.tweet
+    @user_tweets = @user.tweet.offset(@page * TWEETS_PER_PAGE).limit(TWEETS_PER_PAGE).order(created_at: :desc)
   end
 
   def follow
@@ -22,12 +24,10 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @page = params.fetch(:page, 0).to_i 
     @user_followers = @user.followers.offset(@page * USERS_PER_PAGE).limit(USERS_PER_PAGE).order('full_name')
   end
 
   def followees
-    @page = params.fetch(:page, 0).to_i
     @user_followees = @user.followees.offset(@page * USERS_PER_PAGE).limit(USERS_PER_PAGE).order('full_name')
   end
 
@@ -35,5 +35,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_page
+    @page = params.fetch(:page, 0).to_i
   end
 end

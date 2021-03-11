@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
       if @tweet.save
         format.html { redirect_to root_path, notice: 'Your tweet was succesfully posted.' }
       else
-        format.html { reder :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end

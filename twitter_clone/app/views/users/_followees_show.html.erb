@@ -1,2 +1,12 @@
-los sigo
-<p><%= followees_show.full_name %>(<%= followees_show.user_name %>)</p>
+<div>
+  los sigo
+  <p>
+    <%= followees_show.full_name %>
+    (
+      <%= link_to (followees_show.user_name), show_user_path(followees_show) %>
+    )
+  </p>
+</div>
+<div>
+  <%= link_to 'Follow another user'%>
+</div>

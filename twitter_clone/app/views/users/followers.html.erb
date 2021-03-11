@@ -1,9 +1,11 @@
-<h1><%= @user.user_name %> is being followed by:</h1>
+<h1>
+  <%= @user.user_name %> 
+  is being followed by:
+</h1>
 <%= render partial: "followers_show", collection: @user_followers %>
 
 <div>
-<%= link_to 'Back', show_user_path, class:"btn btn-danger" %>
-
-<%= link_to "previous_page", followers_list_path(page: @page - 1), class:"btn btn-primary"%>
-<%= link_to "Next_page", followers_list_path(page: @page + 1), class:"btn btn-primary"%>
+  <%= link_to 'Back', show_user_path, class:"btn btn-danger" %>
+  <%= link_to "previous_page", followers_list_path(page: @page - 1), class:"btn btn-primary"%>
+  <%= link_to "Next_page", followers_list_path(page: @page + 1), class:"btn btn-primary"%>
 </div>
