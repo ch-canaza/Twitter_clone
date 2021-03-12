@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/users/:id/followees', to: 'users#followees', as: 'followees_list'
 
   get 'users/:id/follow_another_user', to: 'users#follow_another_user', as: 'follow_another'
+  post 'users/:id/follow_another_user', to: 'users#follow_another_user', as: 'follow_another_new'
 
   resources :tweets
   root to: 'home#index'

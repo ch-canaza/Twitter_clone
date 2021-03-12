@@ -1,3 +1,25 @@
-<p>
+<div>
+  <b>--------------------------------------------------</b>
+  <br>
+  this is: 
+  <br>
+  <strong>
+    <%= (@user.full_name) %>, 
+  </strong>
+  <strong>
+    <%= (@user.user_name) %> -
+  </strong>
+  <strong>
+    <%= (tweets_show.created_at.strftime('%F')) %>
+  </strong>
+  <br>
+  -------------------------
+  <strong>
+    <br>
+    tweet:
+    <br>
+    </strong>
+  <p>
   <%= tweets_show.tweet %>
-</p>
+  </p>
+<div>

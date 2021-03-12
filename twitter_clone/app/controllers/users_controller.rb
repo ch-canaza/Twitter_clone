@@ -5,17 +5,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show followers followees follow unfollow follow_another_user]
   before_action :set_page, only: %i[show followers followees]
 
-  USERS_PER_PAGE = 3
-  TWEETS_PER_PAGE = 1
+  USERS_PER_PAGE = 10
+  TWEETS_PER_PAGE = 10
 
   def show
     @user_tweets = @user.tweet.offset(@page * TWEETS_PER_PAGE).limit(TWEETS_PER_PAGE).order(created_at: :desc)
   end
 
   def follow
-    #if current_user == @user
-     # flash[:notice] = 'You are trying to follow your self'
-      #redirect_to show_user_path(@user)
     if current_user.followees.include?(@user)
       flash[:notice] = 'You are already following this user'
       redirect_to show_user_path(@user)
@@ -41,11 +38,14 @@ class UsersController < ApplicationController
   end
 
   def follow_another_user
-   # if params[:user_name] == ''
-    #  flash[:notice] = 'enter a value'
-    #else
-    @username = params[:user_name]
-   # end
+    if current_user.followees.include?(@user)
+      flash[:notice] = 'You are already following this user'
+      redirect_to show_user_path(@user)
+    else
+      current_user.followees << @user
+      flash[:notice] = 'You are now following this user'
+      redirect_to show_user_path(@user)
+    end
   end
 
   private

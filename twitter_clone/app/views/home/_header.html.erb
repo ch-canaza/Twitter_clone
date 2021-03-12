@@ -10,6 +10,9 @@
          
         <% if user_signed_in? %>     
           <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link"%>       
+          </li>
+          <li class="nav-item">
             <%= link_to "edit profile", edit_user_registration_path, class: "nav-link"%>       
           </li>
           <li class="nav-item">
@@ -22,7 +25,8 @@
           </li>
           <li class="nav-item">
             <div>
-              Profile: <%= link_to current_user.user_name, show_user_path(current_user), class:"nav-link" %>      
+              My Profile: 
+              <%= link_to current_user.user_name, show_user_path(current_user), class:"nav-link fst-italic" %>      
             </div>
           </li>
         <% else %>

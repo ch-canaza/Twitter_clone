@@ -1,44 +1,36 @@
-<section id="all-links">
-  this is: 
-  <strong>
-    <%= (@user.user_name) %>
-  </strong>
-  <br>
-  <strong>
-    tweets:
-  </strong>
-  <%= render partial: "tweets_show", collection: @user_tweets %>
+<div class="field text-center">
+  <section id="all-links">
+    <h1>Tweets page</h1>
+    <%= render partial: "tweets_show", collection: @user_tweets %>
 
-  <% if @user.id == current_user.id %>
-    <%= button_to "sign out", '/logout', method: :post %>
-  <% elsif current_user.followees.include?(@user) %>
-    <h5>
-      <%= button_to "Unfollow", unfollow_user_path, class:'btn btn-info', method: "POST" %>
-    </h5>
-  <% else %>
-    <h5>
-      <%= button_to "Follow", follow_user_path,class:'btn btn-info', method: "POST"  %>
-    </h5>
-  <% end%>
-  <br>
-  <div>
-    <%= link_to "previous_page", show_user_path(page: @page - 1), class:"btn btn-primary"%>
-    <%= link_to "Next_page", show_user_path(page: @page + 1), class:"btn btn-primary"%>  
-  </div>
-  <div>
-    <p class="card-text">
-      <%= link_to (pluralize(@user.followers.count, "follower")), followers_list_path %>
-    </p>
-    <!--%= render partial: "followers_show", collection: @user_followers %-->  
-    <p class="card-text">
-      <%= link_to (pluralize(@user.followees.count, "followee")), followees_list_path %>
-    </p>
-    <!--%= render partial: "followees_show", collection: @user_followees %-->
-  </div>
+    <% if @user.id == current_user.id %>
+      <%= button_to "sign out", '/logout', method: :post %>
+    <% elsif current_user.followees.include?(@user) %>
+      <h5>
+        <%= button_to "Unfollow", unfollow_user_path, class:'btn btn-info', method: "POST" %>
+      </h5>
+    <% else %>
+      <h5>
+        <%= button_to "Follow", follow_user_path,class:'btn btn-info', method: "POST"  %>
+      </h5>
+    <% end%>
+    <br>
+    <div>
+      <%= link_to "previous_page", show_user_path(page: @page - 1), class:"btn btn-primary"%>
+      <%= link_to "Next_page", show_user_path(page: @page + 1), class:"btn btn-primary"%>  
+    </div>
+    <div>
+      <p class="card-text">
+        <%= link_to (pluralize(@user.followers.count, "follower")), followers_list_path %>
+      </p>
+      <p class="card-text">
+        <%= link_to (pluralize(@user.followees.count, "followee")), followees_list_path %>
+      </p>
+    </div>
 
-</section>
+  </section>
 
-<% if @user != current_user %>
-  <%= link_to 'Back', show_user_path(current_user), class:"btn btn-danger" %>
- 
-<% end %>
+  <% if @user != current_user %>
+    <%= link_to 'Back', show_user_path(current_user), class:"btn btn-danger" %>
+  <% end %>
+</div>

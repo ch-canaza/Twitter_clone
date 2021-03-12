@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     @tweet.user = current_user
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to root_path, notice: 'Your tweet was succesfully posted.' }
+        format.html { redirect_to show_user_path(current_user), notice: 'Your tweet was succesfully posted.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
