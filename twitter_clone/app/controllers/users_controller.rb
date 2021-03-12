@@ -40,12 +40,11 @@ class UsersController < ApplicationController
   def follow_another_user
     if current_user.followees.include?(@user)
       flash[:notice] = 'You are already following this user'
-      redirect_to show_user_path(@user)
     else
       current_user.followees << @user
       flash[:notice] = 'You are now following this user'
-      redirect_to show_user_path(@user)
     end
+    #redirect_to show_user_path(@user)
   end
 
   private
