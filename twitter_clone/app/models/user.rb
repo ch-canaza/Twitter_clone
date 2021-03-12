@@ -27,4 +27,8 @@ class User < ApplicationRecord
               format: { with: VALID_USER_NAME_REGEX }
 
   before_save { self.email = email.downcase }
+
+  def to_param
+    user_name
+  end
 end

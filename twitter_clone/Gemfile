@@ -5,6 +5,8 @@ ruby '3.0.0'
 
 # twitter_clone needed gems
 gem 'devise'
+gem 'jquery-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.2', '>= 6.1.2.1'

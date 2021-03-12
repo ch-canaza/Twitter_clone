@@ -1,0 +1,29 @@
+<%= form_with(model: @user) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(user.errors.count, "error") %> 
+          you are already following this user
+      </h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group" >
+    <strong>
+      <%= form.label :user_name %>
+    </strong>
+    <%= form.text_field :user_name, id: 'keyword',:class=>'input-xxlarge search-query' %>
+  </div>
+  <!--follow_user_path(:@username => 'user_name')-->
+  <br>
+  <%= link_to "Follow user", '', id: 'searchlink', class:'btn btn-info'%> <!-- method: "POST"-->
+  <%= %>
+<% end %>

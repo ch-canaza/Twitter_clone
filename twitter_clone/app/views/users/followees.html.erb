@@ -5,6 +5,10 @@
 <%= render partial: "followees_show", collection: @user_followees %>
 <br>
 <div>
+  <%= link_to 'Follow another user', follow_another_path %>
+</div>
+<br>
+<div>
   <%= link_to 'Back', show_user_path, class:"btn btn-danger" %>
   <%= link_to "previous_page", followees_list_path(page: @page - 1), class:"btn btn-primary"%>
   <%= link_to "Next_page", followees_list_path(page: @page + 1), class:"btn btn-primary"%>
