@@ -22,4 +22,6 @@ in your browser you can go to http://127.0.0.1:3000 or localhost:3000 where is d
 
 There you will find the main page of the application and some navigation options, such as starting your registration, posting a new tweet and following other users.
 
+you can also test the application on https://arcane-hamlet-43787.herokuapp.com/
+
 

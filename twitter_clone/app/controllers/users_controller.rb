@@ -44,7 +44,6 @@ class UsersController < ApplicationController
       current_user.followees << @user
       flash[:notice] = 'You are now following this user'
     end
-    #redirect_to show_user_path(@user)
   end
 
   private
